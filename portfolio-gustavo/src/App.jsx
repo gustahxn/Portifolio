@@ -1,15 +1,16 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Phone } from "lucide-react";
 
 const data = {
-  name: "Gustavo Henrique",
-  role: "Desenvolvedor Full Stack",
-  bio: "Foco em criar experiências digitais sólidas. Especialista em resolver problemas complexos com PHP, React e Node.js.",
+  name: "Gustavo da Silva",
+  role: "Desenvolvedor Full-Stack",
+  bio: "Foco em criar experiências digitais sólidas.\nEm busca de oportunidades como Estagiário ou Junior, na área de Desenvolvimento/TI",
   links: {
     github: "https://github.com/gustahxn",
     linkedin: "https://www.linkedin.com/in/gustavo-oliveiradasilva",
     email: "mailto:gusta2007i@gmail.com",
+    phone: "tel:+5515991616085",
   },
   projects: [
     {
@@ -27,17 +28,17 @@ const data = {
   ],
   experience: [
     {
-      company: "Prefeitura de Sorocaba",
+      company: "Prefeitura Municipal de Sorocaba",
       role: "Estagiário de TI",
       time: "2024 — 2025",
-      desc: "Suporte Nível 1, manutenção de hardware e gestão de sistemas internos.",
+      desc: "Atuação direta no suporte técnico, responsável pela configuração de estações de trabalho, manutenção preventiva e auxílio na gestão de sistemas internos, garantindo a disponibilidade dos serviços municipais.",
     },
   ],
   education: [
-    { school: "FATEC Sorocaba", course: "ADS", time: "2026 — 2028" },
+    { school: "FATEC Sorocaba", course: " Análise e Desenvolvimento de Sistemas - Superior", time: "2026 — 2028" },
     {
       school: "ETEC Fernando Prestes",
-      course: "Técnico DS",
+      course: "Desenvolvimento de Sistemas - Técnico",
       time: "2023 — 2025",
     },
   ],
@@ -45,55 +46,69 @@ const data = {
 };
 
 const TechBackground = () => {
-  const particles = useMemo(() => {
-    const symbols = ["0", "1", "{}", "</>", "&&", ";", "[]", "if", "=>"];
-    return [...Array(15)].map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      duration: Math.random() * 10 + 20,
-      delay: Math.random() * 5,
-      symbol: symbols[Math.floor(Math.random() * symbols.length)],
-    }));
-  }, []);
-
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute text-emerald-500/10 font-mono font-bold select-none"
-          initial={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            opacity: 0,
-          }}
-          animate={{
-            top: [`${p.y}%`, `${p.y - 20}%`],
-            opacity: [0, 0.4, 0],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            ease: "linear",
-            delay: p.delay,
-          }}
-          style={{ fontSize: "1rem" }}
-        >
-          {p.symbol}
-        </motion.div>
-      ))}
-
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+    </div>
+  );
+};
+
+const StatusTerminal = () => {
+  const [lineIndex, setLineIndex] = useState(0);
+  const lines = [
+    { cmd: "café", status: "Concluído", color: "text-emerald-400" },
+    { cmd: "bugs", status: "Corrigindo...", color: "text-amber-400" },
+    { cmd: "produção", status: "Enviando...", color: "text-blue-400" },
+    { cmd: "sono", status: "Erro 404", color: "text-rose-500" },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLineIndex((prev) => (prev + 1) % lines.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="mt-12 w-full max-w-sm p-5 rounded-lg bg-neutral-900/40 border border-neutral-800 font-mono text-sm backdrop-blur-sm select-none hover:border-neutral-700 transition-colors">
+      <div className="flex gap-1.5 mb-4 opacity-100">
+        <div className="w-3 h-3 rounded-full bg-red-500" />
+        <div className="w-3 h-3 rounded-full bg-amber-500" />
+        <div className="w-3 h-3 rounded-full bg-emerald-500" />
+      </div>
+      <div className="space-y-2">
+        <div className="flex text-neutral-400">
+          <span className="text-emerald-500 mr-2">➜</span>
+          <span className="text-cyan-400">~/gustavo</span>
+          <span className="text-purple-400 ml-1">git:(main)</span>
+        </div>
+        <div className="flex text-neutral-300">
+          <span className="text-yellow-400 mr-2">$</span>
+          npm run dev
+        </div>
+
+        <div className="pt-2 border-t border-neutral-800/50 mt-2 space-y-1.5">
+          {lines.map((line, i) => (
+            <div
+              key={i}
+              className={`flex justify-between ${
+                i === lineIndex ? "opacity-100" : "opacity-30"
+              } transition-opacity duration-300`}
+            >
+              <span className="text-neutral-400">{line.cmd}</span>
+              <span className={line.color}>{line.status}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
 const Card = ({ children, className = "" }) => (
   <div
-    className={`group relative p-6 bg-neutral-900/40 border border-neutral-800 hover:border-emerald-900/50 hover:bg-neutral-900/60 transition-all duration-300 rounded-lg ${className}`}
+    className={`group relative p-6 bg-neutral-900/40 border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/60 transition-all duration-300 rounded-lg ${className}`}
   >
     {children}
   </div>
@@ -101,7 +116,7 @@ const Card = ({ children, className = "" }) => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-neutral-400 font-sans selection:bg-emerald-900/30 selection:text-emerald-200">
+    <div className="min-h-screen bg-black text-neutral-400 font-sans selection:bg-neutral-800 selection:text-white">
       <TechBackground />
 
       <div className="relative z-10 lg:flex lg:justify-between lg:gap-4 max-w-screen-xl mx-auto">
@@ -118,7 +133,7 @@ function App() {
               <h2 className="text-xl text-neutral-100 font-medium mb-6">
                 {data.role}
               </h2>
-              <p className="max-w-sm leading-relaxed text-neutral-400 mb-8">
+              <p className="max-w-sm leading-relaxed text-neutral-400 mb-8 whitespace-pre-line">
                 {data.bio}
               </p>
 
@@ -143,7 +158,21 @@ function App() {
                 >
                   <Mail size={22} />
                 </a>
+                <a
+                  href={data.links.phone}
+                  className="text-neutral-400 hover:text-white transition-colors"
+                >
+                  <Phone size={22} />
+                </a>
               </nav>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+              >
+                <StatusTerminal />
+              </motion.div>
             </motion.div>
           </div>
         </header>
@@ -166,7 +195,7 @@ function App() {
                   >
                     <Card>
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-neutral-100 font-semibold text-lg flex items-center gap-2 group-hover:text-emerald-400 transition-colors">
+                        <h3 className="text-neutral-100 font-semibold text-lg flex items-center gap-2 group-hover:text-white transition-colors">
                           {project.title}
                           <ArrowUpRight
                             size={16}
@@ -181,7 +210,7 @@ function App() {
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="text-xs font-medium bg-neutral-800 text-neutral-300 px-3 py-1 rounded-full border border-neutral-700/50 group-hover:border-emerald-500/20"
+                            className="text-xs font-medium bg-neutral-800 text-neutral-300 px-3 py-1 rounded-full border border-neutral-700/50 group-hover:border-neutral-500"
                           >
                             {t}
                           </span>
@@ -194,7 +223,7 @@ function App() {
             </div>
           </section>
 
-          <section>
+          <section className="pt-8 border-t border-neutral-900">
             <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-200 mb-8">
               Experiência
             </h3>
@@ -205,7 +234,7 @@ function App() {
                     {xp.time}
                   </span>
                   <div>
-                    <h4 className="text-neutral-100 font-medium group-hover:text-emerald-400 transition-colors">
+                    <h4 className="text-neutral-100 font-medium group-hover:text-white transition-colors">
                       {xp.role}
                     </h4>
                     <p className="text-sm text-neutral-500 mb-2">
@@ -218,12 +247,15 @@ function App() {
             </div>
           </section>
 
-          <section>
+          <section className="pt-8 border-t border-neutral-900">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-200 mb-8">
+              Habilidades
+            </h3>
             <div className="flex flex-wrap gap-2">
               {data.skills.map((s, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-900 border border-neutral-800 rounded hover:border-emerald-500/30 transition-colors cursor-default"
+                  className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-900 border border-neutral-800 rounded hover:border-neutral-500 transition-colors cursor-default"
                 >
                   {s}
                 </span>
@@ -232,6 +264,9 @@ function App() {
           </section>
 
           <section className="pt-8 border-t border-neutral-900">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-200 mb-8">
+              Formação Acadêmica
+            </h3>
             <div className="grid gap-4">
               {data.education.map((edu, i) => (
                 <div key={i} className="flex justify-between items-end text-sm">
@@ -248,6 +283,10 @@ function App() {
               ))}
             </div>
           </section>
+
+          <footer className="text-xs text-neutral-600">
+            <p>Est 2007, resolvendo problemas.</p>
+          </footer>
         </main>
       </div>
     </div>
