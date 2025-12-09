@@ -35,7 +35,11 @@ const data = {
     },
   ],
   education: [
-    { school: "FATEC Sorocaba", course: " Análise e Desenvolvimento de Sistemas - Superior", time: "2026 — 2028" },
+    {
+      school: "FATEC Sorocaba",
+      course: "Análise e Desenvolvimento de Sistemas - Superior",
+      time: "2026 — 2028",
+    },
     {
       school: "ETEC Fernando Prestes",
       course: "Desenvolvimento de Sistemas - Técnico",
@@ -43,6 +47,12 @@ const data = {
     },
   ],
   skills: ["PHP", "Laravel", "React", "Node.js", "SQL", "Git", "C#"],
+  areas: [
+    "Web Development",
+    "Banco de Dados",
+    "Hardware",
+    "Suporte TI",
+  ],
 };
 
 const TechBackground = () => {
@@ -251,15 +261,27 @@ function App() {
             <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-200 mb-8">
               Habilidades
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {data.skills.map((s, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-900 border border-neutral-800 rounded hover:border-neutral-500 transition-colors cursor-default"
-                >
-                  {s}
-                </span>
-              ))}
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-wrap gap-2">
+                {data.skills.map((s, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-900 border border-neutral-800 rounded hover:border-neutral-500 transition-colors cursor-default"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {data.areas.map((s, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-900 border border-neutral-800 rounded hover:border-neutral-500 transition-colors cursor-default"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -284,7 +306,7 @@ function App() {
             </div>
           </section>
 
-          <footer className="text-xs text-neutral-600">
+          <footer className="text-xs text-neutral-600 pt-12">
             <p>Est 2007, resolvendo problemas.</p>
           </footer>
         </main>
