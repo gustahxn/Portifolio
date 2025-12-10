@@ -228,21 +228,21 @@ function App() {
       
       <TechBackground />
 
-      <motion.button
-        onClick={toggleTheme}
-        className="fixed top-6 left-6 z-50 p-2 rounded-full backdrop-blur-sm transition-colors
-          dark:bg-neutral-900/80 dark:border dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white
-          bg-white/80 border border-neutral-200 text-neutral-600 hover:text-black"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        {currentThemeIcon}
-      </motion.button>
+        <motion.button
+        onClick={toggleTheme}
+        className="fixed top-4 left-4 lg:top-6 lg:left-6 z-50 p-2 rounded-full backdrop-blur-sm transition-colors
+          dark:bg-neutral-900/80 dark:border dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white
+          bg-white/80 border border-neutral-200 text-neutral-600 hover:text-black"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        {currentThemeIcon}
+      </motion.button>
 
-      <div className="fixed top-6 right-6 z-50 flex items-center gap-0 backdrop-blur-sm rounded-full p-1
-          dark:bg-neutral-900/80 dark:border dark:border-neutral-800
-          bg-neutral-100/80 border border-neutral-300">
+      <div className="fixed top-4 right-4 lg:top-6 lg:right-6 z-50 flex items-center gap-0 backdrop-blur-sm rounded-full p-1
+          dark:bg-neutral-900/80 dark:border dark:border-neutral-800
+          bg-neutral-100/80 border border-neutral-300">
         <button
           onClick={() => setLanguage("pt")}
           className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
