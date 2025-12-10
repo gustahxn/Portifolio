@@ -238,7 +238,7 @@ function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl lg:text-5xl font-bold text-neutral-100 tracking-tight mb-3 font-['Space_Grotesk']">
+              <h1 className="text-4xl lg:text-5xl font-bold text-neutral-100 tracking-tight mb-3" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 {data.name}
               </h1>
               <h2 className="text-xl text-neutral-100 font-medium mb-6">
@@ -249,27 +249,29 @@ function App() {
               </p>
 
               <nav className="flex items-center gap-5">
-                
+                <a
                   href={links.github}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
                   <Github size={22} />
                 </a>
-                
+                <a
                   href={links.linkedin}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
                   <Linkedin size={22} />
                 </a>
-                
+                <a
                   href={links.email}
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
                   <Mail size={22} />
                 </a>
-                
+                <a
                   href={links.phone}
                   className="text-neutral-400 hover:text-white transition-colors"
                 >
@@ -298,10 +300,10 @@ function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  
+                  <a
                     href={project.link}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="block"
                   >
                     <Card>
