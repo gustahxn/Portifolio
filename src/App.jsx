@@ -354,12 +354,14 @@ const ContactForm = ({ texts }) => {
           type="submit"
           disabled={status === "sending" || status === "success"}
           className={`flex items-center gap-2 px-4 py-2 rounded text-sm font-medium transition-all
-            ${
-              status === "success"
-                ? "bg-emerald-500 text-white"
-                : "dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-800 dark:hover:text-neutral-200 bg-neutral-800 text-white hover:bg-black"
-            }`}
-        >
+          ${
+            status === "success"
+              ? "bg-emerald-500 text-white"
+              : 
+                "border border-transparent bg-neutral-800 text-white hover:bg-neutral-200 hover:border-black hover:text-black" +
+                " dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+          }`}
+              >
           {status === "sending" ? (
             texts.sending
           ) : status === "success" ? (
@@ -663,7 +665,7 @@ function App() {
             <p className="mb-6 text-sm dark:text-neutral-400 text-neutral-600">
               {language === "pt"
                 ? "Tem um projeto em mente, deseja me contratar ou quer alinhas umas ideias? Entre em contato comigo!"
-                : "Have a project in mind or just want to chat? Contact me!"}
+                : "Have a project in mind, want to hire me or just talk some? Contact me!"}
             </p>
             <ContactForm texts={data.contactForm} />
           </section>
