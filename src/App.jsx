@@ -232,7 +232,7 @@ function App() {
         onClick={toggleTheme}
         className="fixed top-4 left-4 lg:top-6 lg:left-6 z-50 p-2.5 rounded-full backdrop-blur-sm transition-all shadow-lg
           dark:bg-neutral-800 dark:border-2 dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:hover:border-neutral-500
-          bg-neutral-200 border-2 border-neutral-400 text-neutral-700 hover:bg-neutral-300 hover:border-neutral-500"
+          bg-white border-2 border-neutral-300 text-neutral-600 hover:bg-neutral-50 hover:border-neutral-400"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
@@ -280,7 +280,7 @@ function App() {
       </div>
 
       <div className="relative z-10 lg:flex lg:justify-between lg:gap-4 max-w-screen-xl mx-auto">
-        <header className="pt-32 pb-12 px-6 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:mt-0 lg:py-24 lg:px-12">
+        <header className="pt-28 pb-12 px-6 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:mt-0 lg:py-24 lg:px-12">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
