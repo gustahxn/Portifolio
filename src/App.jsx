@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -14,6 +15,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import NotFound from "./NotFound"; 
 
 const translations = {
   pt: {
@@ -162,6 +164,7 @@ const links = {
   email: "mailto:gusta2007i@gmail.com",
   phone: "tel:+5515991616085",
 };
+
 
 const TechBackground = () => {
   return (
@@ -357,11 +360,10 @@ const ContactForm = ({ texts }) => {
           ${
             status === "success"
               ? "bg-emerald-500 text-white"
-              : 
-                "border border-transparent bg-neutral-800 text-white hover:bg-neutral-200 hover:border-black hover:text-black" +
+              : "border border-transparent bg-neutral-800 text-white hover:bg-neutral-200 hover:border-black hover:text-black" +
                 " dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
           }`}
-              >
+        >
           {status === "sending" ? (
             texts.sending
           ) : status === "success" ? (
@@ -381,41 +383,12 @@ const ContactForm = ({ texts }) => {
   );
 };
 
-const getInitialTheme = () => {
-  if (typeof window !== "undefined" && localStorage.getItem("theme")) {
-    return localStorage.getItem("theme");
-  }
-  return "dark";
-};
-
-function App() {
-  const [language, setLanguage] = useState("pt");
-  const [theme, setTheme] = useState(getInitialTheme);
-  const data = translations[language];
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-  };
-
+const Portfolio = ({ data, language, setLanguage, theme, toggleTheme }) => {
   const currentThemeIcon =
     theme === "dark" ? <Sun size={18} /> : <Moon size={18} />;
 
   return (
-    <div
-      className="min-h-screen font-sans selection:bg-opacity-50 transition-colors 
-        dark:bg-black dark:text-neutral-400 dark:selection:bg-neutral-800 dark:selection:text-white
-        bg-white text-neutral-600 selection:bg-neutral-200 selection:text-black"
-    >
+    <>
       <TechBackground />
 
       <motion.button
@@ -675,7 +648,66 @@ function App() {
           </footer>
         </main>
       </div>
-    </div>
+    </>
+  );
+};
+
+
+const getInitialTheme = () => {
+  if (typeof window !== "undefined" && localStorage.getItem("theme")) {
+    return localStorage.getItem("theme");
+  }
+  return "dark";
+};
+
+function App() {
+  const [language, setLanguage] = useState("pt");
+  const [theme, setTheme] = useState(getInitialTheme);
+  const data = translations[language];
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+  };
+
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen font-sans selection:bg-opacity-50 transition-colors dark:bg-black dark:text-neutral-400 dark:selection:bg-neutral-800 dark:selection:text-white bg-white text-neutral-600 selection:bg-neutral-200 selection:text-black">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Portfolio
+                data={data}
+                language={language}
+                setLanguage={setLanguage}
+                theme={theme}
+                toggleTheme={toggleTheme}
+              />
+            }
+          />
+
+          <Route
+            path="*"
+            element={
+              <>
+                <TechBackground />
+                <NotFound language={language} />
+              </>
+            }
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
