@@ -652,7 +652,6 @@ const Portfolio = ({ data, language, setLanguage, theme, toggleTheme }) => {
   );
 };
 
-
 const getInitialTheme = () => {
   if (typeof window !== "undefined" && localStorage.getItem("theme")) {
     return localStorage.getItem("theme");
@@ -660,10 +659,21 @@ const getInitialTheme = () => {
   return "dark";
 };
 
+const getInitialLanguage = () => {
+  if (typeof window !== "undefined" && localStorage.getItem("language")) {
+    return localStorage.getItem("language");
+  }
+  return "pt"; 
+};
+
 function App() {
-  const [language, setLanguage] = useState("pt");
+  const [language, setLanguage] = useState(getInitialLanguage);
   const [theme, setTheme] = useState(getInitialTheme);
   const data = translations[language];
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
 
   useEffect(() => {
     const root = document.documentElement;
