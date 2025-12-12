@@ -6,13 +6,11 @@ import { ArrowLeft } from "lucide-react";
 const NotFound = ({ language }) => {
   const texts = {
     pt: {
-      code: "erro 404",
       title: "Página não encontrada",
       desc: "O caminho que você está tentando acessar não existe.",
       button: "Voltar",
     },
     en: {
-      code: "error 404",
       title: "Page not found",
       desc: "The path you are trying to access does not exist.",
       button: "Go Back",
@@ -29,26 +27,27 @@ const NotFound = ({ language }) => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <span className="inline-block px-3 py-1 mb-6 text-xs font-mono font-medium rounded
-          dark:bg-neutral-900 dark:text-neutral-400 dark:border dark:border-neutral-800 
-          bg-neutral-100 text-neutral-500 border border-neutral-200">
-          {t.code}
-        </span>
-
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-mono 
-          dark:text-neutral-100 text-neutral-900">
+        <h1
+          className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-mono 
+          dark:text-neutral-100 text-neutral-900"
+        >
           {t.title}
         </h1>
 
-        <p className="text-sm md:text-base leading-relaxed mb-10 max-w-md mx-auto
-          dark:text-neutral-400 text-neutral-600">
+        <p
+          className="text-sm md:text-base leading-relaxed mb-10 max-w-md mx-auto
+          dark:text-neutral-400 text-neutral-600"
+        >
           {t.desc}
         </p>
 
         <Link to="/">
-          <button className="inline-flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium transition-all
-            bg-neutral-900 text-white hover:bg-neutral-700
-            dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-300">
+          <button
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded text-sm font-medium transition-all
+            bg-neutral-900 text-white hover:bg-neutral-200 hover:border-neutral-800 hover:text-black
+            border-2 border-transparent
+            dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-900 dark:hover:border-neutral-500 dark:hover:text-white"
+          >
             <ArrowLeft size={16} />
             {t.button}
           </button>
