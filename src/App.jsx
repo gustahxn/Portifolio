@@ -15,7 +15,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import NotFound from "./NotFound"; 
+import NotFound from "./NotFound";
 
 const translations = {
   pt: {
@@ -28,6 +28,12 @@ const translations = {
         desc: "Plataforma social completa com arquitetura robusta de banco de dados.",
         tech: ["PHP", "SQL", "JavaScript"],
         link: "https://www.luvit.fun",
+      },
+      {
+        title: "Escuta Aí",
+        desc: "Similaridade musical, conectando o usuário aos seus serviços de streaming favoritos.",
+        tech: ["React", "API", "Vercel"],
+        link: "https://escuta-ai.vercel.app",
       },
       {
         title: "SoroFitness",
@@ -99,6 +105,12 @@ const translations = {
         link: "https://www.luvit.fun",
       },
       {
+        title: "Escuta Aí",
+        desc: "Musical similarity, connecting users to their favorite streaming services.",
+        tech: ["React", "API", "Vercel"],
+        link: "https://escuta-ai.vercel.app",
+      },
+      {
         title: "SoroFitness",
         desc: "Modern application for health and body metrics calculation.",
         tech: ["React", "Tailwind", "Vercel"],
@@ -125,7 +137,7 @@ const translations = {
         time: "2023 — 2025",
       },
     ],
-    skills: ["PHP", "Laravel", "React", "Node.js", "SQL", "Git", "C#"],
+    skills: ["PHP", "Laravel", "React", "Node.js", "SQL", "Go", "C#"],
     areas: ["Web Development", "Database", "Hardware", "IT Support"],
     sections: {
       projects: "Projects",
@@ -164,7 +176,6 @@ const links = {
   email: "mailto:gusta2007i@gmail.com",
   phone: "tel:+5515991616085",
 };
-
 
 const TechBackground = () => {
   return (
@@ -276,7 +287,6 @@ const ContactForm = ({ texts }) => {
         setTimeout(() => setStatus(""), 5000);
       })
       .catch((err) => {
-        console.error("FAILED...", err);
         setStatus("error");
       });
   };
@@ -663,7 +673,7 @@ const getInitialLanguage = () => {
   if (typeof window !== "undefined" && localStorage.getItem("language")) {
     return localStorage.getItem("language");
   }
-  return "pt"; 
+  return "pt";
 };
 
 function App() {
