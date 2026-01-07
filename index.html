@@ -1,5 +1,17 @@
 <!doctype html>
 <html lang="en">
+  <script>
+  
+  //pega tema do user
+  const theme = localStorage.getItem('theme') || 'dark';
+  //se nao existir define como dark
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+</script>
+
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/public/code.png" />
