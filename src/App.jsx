@@ -27,6 +27,12 @@ const translations = {
     resumePath: "/cvPT.pdf",
     projects: [
       {
+        title: "Edyx Editor",
+        desc: "Editor de texto minimalista focado em performance e simplicidade, com layout A4 real e exportação PDF/DOCX.",
+        tech: ["React", "Node.js", "TypeScript", "Tailwind"],
+        link: "https://github.com/gustahxn/Edyx",
+      },
+      {
         title: "Luvit.fun",
         desc: "Plataforma social completa com arquitetura robusta de banco de dados.",
         tech: ["PHP", "SQL", "JavaScript"],
@@ -103,6 +109,12 @@ const translations = {
     downloadBtn: "Download CV",
     resumePath: "/cvEN.pdf",
     projects: [
+      {
+        title: "Edyx Editor",
+        desc: "Minimalist text editor focused on performance and simplicity, featuring real A4 layout and PDF/DOCX export.",
+        tech: ["React","Node.js", "TypeScript", "Tailwind"],
+        link: "https://github.com/gustahxn/Edyx",
+      },
       {
         title: "Luvit.fun",
         desc: "Complete social platform with robust database architecture.",
