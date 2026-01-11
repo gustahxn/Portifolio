@@ -33,6 +33,12 @@ const translations = {
         link: "https://github.com/gustahxn/Edyx",
       },
       {
+        title: "AquaFlux",
+        desc: "Projeto experimental de UI em Next.js com shadcn/ui, focado em layout, navegação e UX.",
+        tech: ["React", "Next.js", "Shadcn", "Recharts"],
+        link: "https://aqua-flux-ui.vercel.app",
+      },
+      {
         title: "Luvit.fun",
         desc: "Plataforma social completa com arquitetura robusta de banco de dados.",
         tech: ["PHP", "SQL", "JavaScript"],
@@ -56,7 +62,7 @@ const translations = {
         company: "Prefeitura Municipal de Sorocaba",
         role: "Estagiário de TI",
         time: "2024 — 2025",
-        desc: "Atuação direta no suporte técnico, responsável pela configuração de estações de trabalho, manutenção preventiva e auxílio na gestão de sistemas internos, garantindo a disponibilidade dos serviços municipais.",
+        desc: "Atuação no suporte técnico e desenvolvimento de aplicações internas para otimização de processos. Responsável pela configuração de estações, manutenção preventiva e auxílio na gestão de sistemas, garantindo a eficiência dos serviços municipais.",
       },
     ],
     education: [
@@ -116,6 +122,12 @@ const translations = {
         link: "https://github.com/gustahxn/Edyx",
       },
       {
+        title: "AquaFlux",
+        desc: "Experimental UI project in Next.js with shadcn/ui, focused on layout, navigation, and UX.",
+        tech: ["React", "Next.js", "Shadcn", "Recharts"],
+        link: "https://aqua-flux-ui.vercel.app",
+      },
+      {
         title: "Luvit.fun",
         desc: "Complete social platform with robust database architecture.",
         tech: ["PHP", "SQL", "JavaScript"],
@@ -139,7 +151,7 @@ const translations = {
         company: "Sorocaba City Hall",
         role: "IT Intern",
         time: "2024 — 2025",
-        desc: "Direct work in technical support, responsible for workstation configuration, preventive maintenance, and assistance in managing internal systems, ensuring the availability of municipal services.",
+        desc: "Direct work in technical support and development of internal applications for process optimization. Responsible for workstation configuration, preventive maintenance, and system management support.",
       },
     ],
     education: [
@@ -263,7 +275,7 @@ const StatusTerminal = ({ lines }) => {
 
 const Card = ({ children, className = "" }) => (
   <div
-    className={`group relative p-6 transition-all duration-300 rounded-lg ${className}
+    className={`group relative transition-all duration-300 rounded-lg ${className}
       dark:bg-neutral-900/40 dark:border dark:border-neutral-800 
       bg-white border-2 border-neutral-300`}
   >
@@ -311,7 +323,7 @@ const ContactForm = ({ texts }) => {
   };
 
   return (
-    <Card className="mt-8">
+    <Card className="mt-8 p-6">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="group/input">
           <label className="block text-xs font-bold mb-1 dark:text-neutral-400 text-neutral-900">
@@ -538,7 +550,7 @@ const Portfolio = ({ data, language, setLanguage, theme, toggleTheme }) => {
             <h3 className="text-sm font-black uppercase tracking-widest mb-8 dark:text-neutral-200 text-black">
               {data.sections.projects}
             </h3>
-            <div className="grid gap-6">
+            <div className="grid gap-4">
               {data.projects.map((project, i) => (
                 <div key={i}>
                   <a
@@ -547,25 +559,24 @@ const Portfolio = ({ data, language, setLanguage, theme, toggleTheme }) => {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    {/* ADDED HOVER CLASSES HERE MANUALLY SINCE IT'S A LINK */}
-                    <Card className="hover:border-neutral-500 hover:shadow-xl dark:hover:border-neutral-600 dark:hover:bg-neutral-900/60">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="font-bold text-lg flex items-center gap-2 transition-colors dark:text-neutral-100 dark:group-hover:text-white text-black group-hover:text-emerald-700">
+                    <Card className="p-4 hover:border-neutral-500 hover:shadow-xl dark:hover:border-neutral-600 dark:hover:bg-neutral-900/60">
+                      <div className="flex justify-between items-start mb-1">
+                        <h3 className="font-bold text-base flex items-center gap-2 transition-colors dark:text-neutral-100 dark:group-hover:text-white text-black group-hover:text-emerald-700">
                           {project.title}
                           <ArrowUpRight
-                            size={16}
+                            size={14}
                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                           />
                         </h3>
                       </div>
-                      <p className="text-sm mb-4 leading-relaxed dark:text-neutral-400 text-neutral-800 font-medium">
+                      <p className="text-xs mb-3 leading-relaxed dark:text-neutral-400 text-neutral-800 font-medium">
                         {project.desc}
                       </p>
                       <div className="flex gap-2 flex-wrap">
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="text-xs font-bold px-3 py-1 rounded-full transition-colors dark:bg-neutral-800 dark:text-neutral-300 dark:border dark:border-neutral-700/50 dark:group-hover:border-neutral-500 bg-neutral-200 text-neutral-900 border-2 border-neutral-300 group-hover:border-neutral-500"
+                            className="text-[10px] font-bold px-2 py-0.5 rounded-full transition-colors dark:bg-neutral-800 dark:text-neutral-300 dark:border dark:border-neutral-700/50 dark:group-hover:border-neutral-500 bg-neutral-200 text-neutral-900 border-2 border-neutral-300 group-hover:border-neutral-500"
                           >
                             {t}
                           </span>
