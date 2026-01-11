@@ -220,8 +220,8 @@ const StatusTerminal = ({ lines }) => {
   return (
     <div
       className="mt-12 w-full max-w-sm p-5 rounded-lg font-mono text-sm backdrop-blur-sm select-none transition-colors 
-        dark:bg-neutral-900/40 dark:border dark:border-neutral-800 dark:hover:border-neutral-700
-        bg-neutral-200/50 border border-neutral-400 hover:border-neutral-500"
+        dark:bg-neutral-900/40 dark:border dark:border-neutral-800
+        bg-neutral-200/50 border border-neutral-400"
     >
       <div className="flex gap-1.5 mb-4 opacity-100">
         <div className="w-3 h-3 rounded-full bg-red-500" />
